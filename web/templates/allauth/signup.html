@@ -1,0 +1,78 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% load allauth account %} 
+{% block content %}
+  <section class="col-start-2 md:col-start-5 col-span-8 md:col-span-6 my-auto flex flex-col gap-12">
+    <img class="mx-auto w-[50%]" src="{% static 'img/logo-devlinks-large.svg'%}" alt="Devlinks Logo">
+    <div class="p-8 rounded-md bg-white flex flex-col gap-4">
+      <div class="flex flex-col gap-2">
+        <h1 class="text-[32px] font-bold">
+          Create account
+        </h1>
+        <p class="text-gray-500 text-sm">Let's get you started sharing your links!</p>
+      </div>
+      <form method="post" action="{{ account_signup }}">
+      {% csrf_token %}
+        {{ form.signup.errors | safe }}
+        <label for="id_email" class="block mt-4 mb-1 text-sm text-gray-500">Email:</label>
+        <div class="form-input">
+          <img class="icon" src="{% static 'img/icon-email.svg' %}">
+          <input
+            class="w-full"
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            maxlength="320"
+            required
+            id="id_email"
+          />
+        </div>
+        {% if form.email.errors %}
+          {{ form.email.errors | safe }}
+        {% endif %}
+        <label for="id_password1" class="block mt-4 mb-1 text-sm text-gray-500">Password:</label>
+        <div class="form-input">
+          <img class="icon" src="{% static 'img/icon-password.svg' %}">
+          <input
+            class="w-full"
+            type="password"
+            name="password1"
+            placeholder="Enter a password"
+            required
+            id="id_password1"
+          />
+        </div>
+        {% if form.password1.errors %}
+          {{ form.password1.errors | safe }}
+        {% endif %}
+        <label for="id_password2" class="block mt-4 mb-1 text-sm text-gray-500">Password (again):</label>
+        <div class="form-input">
+          <img class="icon" src="{% static 'img/icon-password.svg' %}">
+          <input
+            class="w-full"
+            type="password"
+            name="password2"
+            placeholder="Enter the password again"
+            required
+            id="id_password2"
+          />
+        </div>
+        {% if form.password2.errors %}
+          {{ form.password1.errors | safe }}
+        {% endif %}
+        {% if redirect_field_value %}
+        <input
+          type="hidden"
+          name="{{ redirect_field_name }}"
+          value="{{ redirect_field_value }}"
+        />
+        {% endif %}
+        <button class="my-6 w-full btn btn__primary" type="submit">Sign Up</button>
+        <p class="mt-4 text-center text-gray-400">
+          Already have an account?
+          <a class="text-purple-600 hover:text-indigo-300 hover:cursor-pointer" href="{{ login_url }}">Login</a>
+        </p>
+      </form>
+    </div>
+  </section>
+{% endblock content %}

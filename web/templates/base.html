@@ -1,0 +1,21 @@
+<!-- Base.html - the root template for loading assets etc -->
+{% load static %}
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A portfolio application to manage your social links">
+    <meta name="keywords" content="links, portfolio, bayford">
+    <meta name="author" content="bayford.dev">
+    <title>Links</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+  </head>
+    <main class="grid [grid-template-columns:20px_repeat(8,1fr)_20px] md:[grid-template-columns:1fr_repeat(12,64px)_1fr] mx-auto min-h-screen font-sans bg-gray-100">{% block content %} {% endblock %}</main>
+  </body>
+  <script
+    type="text/javascript"
+    src="{% static 'js/main.js' %}"
+    defer
+  ></script>
+</html>

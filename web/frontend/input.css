@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "InstrumentSans";
+  src: url("../core/static/fonts/InstrumentSans-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "InstrumentSans";
+  src: url("../core/static/fonts/InstrumentSans-Bold.ttf") format("ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Common lement styles */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  @apply border border-gray-300 rounded-md px-3 py-2 text-gray-500 focus:outline-none;
+}
+
+/* Blurred focus border on form elements */
+input[type="text"]:hover,
+input[type="text"]:focus,
+input[type="email"]:hover,
+input[type="email"]:focus,
+input[type="password"]:hover,
+input[type="password"]:focus {
+  box-shadow: rgba(190, 173, 255, 0.25) 0px 54px 55px,
+    rgba(190, 173, 255, 0.12) 0px -12px 30px,
+    rgba(190, 173, 255, 0.12) 0px 4px 6px,
+    rgba(190, 173, 255, 0.17) 0px 12px 13px,
+    rgba(190, 173, 255, 0.09) 0px -3px 5px;
+  border: 1px solid #633cff;
+  cursor: pointer;
+}
+
+/* Allow for icons in input fields (Add svg as sibling) */
+.form-input {
+  position: relative;
+  > .icon {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.625rem;
+  }
+  > input {
+    padding-left: 2rem;
+  }
+}
+
+button:disabled {
+  opacity: 80%;
+}
+
+@layer components {
+  .btn {
+    @apply flex justify-center gap-2 items-center py-3 px-4 rounded-lg hover:cursor-pointer;
+  }
+  .btn__primary {
+    @apply bg-purple-600 text-white hover:bg-purple-400;
+  }
+  .btn__secondary {
+    @apply justify-start border border-neutral-300 dark:border-neutral-600;
+  }
+}
+
+.errorlist {
+  @apply text-red-500;
+}

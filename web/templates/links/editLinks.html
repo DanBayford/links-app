@@ -1,0 +1,7 @@
+{% extends 'base.html' %} {% block content %}
+<section>Edit links (React)</section>
+    <form method="post" action="{% url 'account_logout' %}">
+      {% csrf_token %}
+      <button type="submit">Log out</button>
+    </form>
+{% endblock content %}

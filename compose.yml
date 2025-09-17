@@ -1,0 +1,13 @@
+services:
+  web:
+    build: ./web
+    container_name: links-app-dev
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./web/:/home/app/
+    ports:
+      - 8000:8000
+    environment:
+      DJANGO_SETTINGS_MODULE: core.settings.dev
+    env_file:
+      - ./env/.env.dev
