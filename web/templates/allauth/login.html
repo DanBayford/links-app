@@ -1,70 +1,82 @@
 {% extends 'base.html' %} 
 {% load static %} 
-{% load allauth account %} 
+{% load allauth account %}
 {% block content %}
-  <section class="col-start-2 md:col-start-5 col-span-8 md:col-span-6 my-auto flex flex-col gap-12">
-    <img class="mx-auto w-[50%]" src="{% static 'img/logo-devlinks-large.svg'%}" alt="Devlinks Logo">
-    <div class="p-8 rounded-md bg-white flex flex-col gap-4">
-      <div class="flex flex-col gap-2">
-        <h1 class="text-[32px] font-bold">
-          Login
-        </h1>
-        <p class="text-gray-500 text-sm">Add your details below to get back into the app</p>
-      </div>
-      {% url 'account_login' as login_url %} 
-      {% element form form=form method="post" action=login_url tags="entrance,login" %} 
-      {% slot body %} 
-      {% csrf_token %}
-      {{ form.login.errors | safe }}
-      <label for="email" class="block mt-4 mb-1 text-sm text-gray-500">Email Address</label>
-      <div class="form-input">
-        <img class="icon" src="{% static 'img/icon-email.svg' %}">
-        <input
-          class="w-full"
-          type="email"
-          name="login"
-          placeholder="dan@links.com"
-          autocomplete="email"
-          maxlength="320"
-          required
-          id="id_login"
-          value="{{ form.login.value|default_if_none:'' }}"
-        />
-      </div>
-      {{ form.password.errors | safe }}
-      <label for="id_password" class="block mt-4 mb-1 text-sm text-gray-500">Password</label>
-      <div class="form-input">
-        <img class="icon" src="{% static 'img/icon-password.svg' %}">
-        <input
-          class="w-full"
-          type="text"
-          name="password"
-          placeholder="P@ssword!"
-          required
-          id="id_password"
-        />
-      </div>
-      {% if form.non_field_errors %}
-        <div class="my-2">
-          {{ form.non_field_errors | safe }}
-        </div>
-      {% endif %}
-      {% if redirect_field_value %}
-      <input
-        type="hidden"
-        name="{{ redirect_field_name }}"
-        value="{{ redirect_field_value }}"
-      />
-      {% endif %} 
-      {% endslot %} 
-      {% slot actions %}
-      <button class="my-6 w-full btn btn__primary" type="submit">Login</button>
-      <p class="text-center">
-        Don't have an account?
-        <a class="text-purple-600 hover:text-indigo-300 hover:cursor-pointer" href="{{ signup_url }}">Create account</a>
+<section
+  class="col-start-2 md:col-start-3 lg:col-start-5 col-span-8 md:col-span-6 lg:col-span-6 row-start-2 my-4 flex flex-col gap-12"
+>
+  <img
+    class="mx-auto w-[50%]"
+    src="{% static 'img/logo-devlinks-large.svg'%}"
+    alt="Devlinks Logo"
+  />
+  <div class="p-8 rounded-md bg-white flex flex-col gap-4">
+    <div class="flex flex-col gap-2">
+      <h1 class="text-[32px] font-bold">Login</h1>
+      <p class="text-gray-500 text-sm">
+        Add your details below to get back into the app
       </p>
-      {% endslot %} 
-      {% endelement %}
     </div>
-  </section>
+    {% url 'account_login' as login_url %}
+    {% element form form=form method="post" action=login_url tags="entrance,login" %} 
+    {% slot body %} 
+    {% csrf_token %} 
+    {{ form.login.errors | safe }}
+    <label for="email" class="block mt-4 mb-1 text-sm text-gray-500"
+      >Email Address</label
+    >
+    <div class="form-input">
+      <img class="icon" src="{% static 'img/icon-email.svg' %}" />
+      <input
+        class="w-full"
+        type="email"
+        name="login"
+        placeholder="dan@links.com"
+        autocomplete="email"
+        maxlength="320"
+        required
+        id="id_login"
+        value="{{ form.login.value|default_if_none:'' }}"
+      />
+    </div>
+    {{ form.password.errors | safe }}
+    <label for="id_password" class="block mt-4 mb-1 text-sm text-gray-500"
+      >Password</label
+    >
+    <div class="form-input">
+      <img class="icon" src="{% static 'img/icon-password.svg' %}" />
+      <input
+        class="w-full"
+        type="text"
+        name="password"
+        placeholder="P@ssword!"
+        required
+        id="id_password"
+      />
+    </div>
+    {% if form.non_field_errors %}
+    <div class="my-2">{{ form.non_field_errors | safe }}</div>
+    {% endif %} 
+    {% if redirect_field_value %}
+    <input
+      type="hidden"
+      name="{{ redirect_field_name }}"
+      value="{{ redirect_field_value }}"
+    />
+    {% endif %} 
+    {% endslot %} 
+    {% slot actions %}
+    <button class="my-6 w-full btn btn__primary" type="submit">Login</button>
+    <p class="text-center">
+      Don't have an account?
+      <a
+        class="text-purple-600 hover:text-indigo-300 hover:cursor-pointer"
+        href="{{ signup_url }}"
+        >Create account</a
+      >
+    </p>
+    {% endslot %} 
+    {% endelement %}
+  </div>
+</section>
 {% endblock content %}

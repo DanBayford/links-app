@@ -24,10 +24,4 @@ Docker container has dynamic IP so cannot be hard coded
 https://ranjanmp.medium.com/django-debug-toolbar-not-showing-up-when-using-docker-django-docker-e79585813bc6
 """
 hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
-INTERNAL_IPS = (
-    [ip[:-1] + "1" for ip in ips]
-    + [  # Docker network IP
-        "127.0.0.1"
-    ]
-    + ips
-)
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips] + ["127.0.0.1"] + ips  # Docker network IP

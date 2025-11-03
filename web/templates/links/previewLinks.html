@@ -1,3 +1,20 @@
-{% extends 'base.html' %} {% block content %}
-<section>Preview links</section>
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+<section class="relative col-span-full row-span-full flex-col">
+  <!-- Purple background -->
+  <div class="absolute top-0 left-0 w-full h-2/5 bg-purple-600 rounded-b-3xl"></div>
+  <!-- Content -->
+  <div class="relative h-full z-10 flex justify-center items-center">
+    {% if request.user.is_authenticated %}
+    <div class="absolute top-6 left-6 w-[calc(100%-3rem)] p-4 flex justify-between bg-white rounded-xl">
+      <a href="{% url 'links:edit' pk=object.id %}" class="btn btn__secondary">Back to Editor</a>
+      <button class="btn btn__primary">Share Link</button>
+    </div>
+    {% endif %}
+    <div class="h-120 w-70 bg-white shadow-[0_10px_30px_rgba(115,_115,_155,_0.7)] rounded-xl">Card</div>
+  </div>
+</section>
+
+
 {% endblock content %}

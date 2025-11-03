@@ -35,7 +35,7 @@ SECURE_SSL_REDIRECT = True
 
 # Secure cookies
 SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False  # React useing on API
 
 # CSRF (remember to include scheme!)
 CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(" ")

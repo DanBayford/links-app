@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@theme {
+  --font-display: "InstrumentSans", "sans";
+  --breakpoint-lg: 70rem;
+
+  --color-purple-600: rgb(99, 60, 225);
+  --color-indigo-300: rgb(190, 173, 255);
+  --color-indigo-50: rgb(239, 235, 255);
+  --color-gray-50: rgb(250, 250, 250);
+  --color-gray-300: rgb(217, 217, 217);
+  --color-gray-500: rgb(115, 115, 115);
+  --color-gray-800: rgb(51, 51, 51);
+  --color-red-500: rgb(255, 57, 57);
+}
+
 @font-face {
   font-family: "InstrumentSans";
   src: url("../core/static/fonts/InstrumentSans-Regular.ttf") format("ttf");
@@ -14,10 +28,12 @@
   font-style: normal;
 }
 
-/* Common lement styles */
+/* Common element styles */
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="url"],
+select {
   @apply border border-gray-300 rounded-md px-3 py-2 text-gray-500 focus:outline-none;
 }
 
@@ -50,22 +66,53 @@ input[type="password"]:focus {
   }
 }
 
+.form-error {
+  @apply text-red-500;
+}
+
 button:disabled {
   opacity: 80%;
 }
 
 @layer components {
   .btn {
-    @apply flex justify-center gap-2 items-center py-3 px-4 rounded-lg hover:cursor-pointer;
+    @apply flex justify-center gap-2 items-center py-2 px-4 rounded-lg hover:cursor-pointer;
   }
   .btn__primary {
     @apply bg-purple-600 text-white hover:bg-purple-400;
   }
   .btn__secondary {
-    @apply justify-start border border-neutral-300 dark:border-neutral-600;
+    @apply border border-purple-600 text-purple-600 hover:bg-indigo-50;
+  }
+  .btn__link {
+    @apply hover:bg-indigo-50 hover:text-indigo-800;
+  }
+  .btn__link svg,
+  .btn__link svg * {
+    @apply hover:fill-current;
+  }
+  .btn__link--active {
+    @apply bg-indigo-50 text-indigo-800;
+  }
+  .btn__link--active svg,
+  .btn__link--active svg * {
+    @apply fill-current;
   }
 }
 
 .errorlist {
   @apply text-red-500;
+}
+
+@layer utilities {
+  .indigo__icon > path {
+    stroke: rgb(99, 60, 225);
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }

@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView
 
+
 class HomePage(TemplateView):
-  template_name = "marketing/homepage.html"
+    template_name = "marketing/homepage.html"

@@ -14,7 +14,8 @@ INSTALLED_APPS = [
     "users",
     "health",
     "marketing",
-    "links"
+    "links",
+    "api",
 ]
 
 MIDDLEWARE = [
@@ -83,10 +84,10 @@ AUTHENTICATION_BACKENDS = [
 
 # all-auth config due to custom user model
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"] # * means required
+ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]  # * means required
 ACCOUNT_LOGIN_METHODS = {"email"}
 SITE_ID = 1
-LOGIN_URL = "/login"  # Redirect fro unauthed users
+LOGIN_URL = "/login"  # Redirect for unauthed users
 LOGOUT_REDIRECT_URL = "/login"
 ACCOUNT_EMAIL_VERIFICATION = "none"  # disable email verification
 ACCOUNT_ADAPTER = "users.adapters.CustomAccountAdapter"
@@ -102,3 +103,9 @@ USE_TZ = True
 STATIC_URL = "static/"
 # Static source files
 STATICFILES_DIRS = [str(BASE_DIR / "core/static")]
+
+# URL namespace for uploaded files
+MEDIA_URL = "/media/"
+
+# Where to upload media (parent dir)
+MEDIA_ROOT = BASE_DIR / "media"

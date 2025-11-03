@@ -1,0 +1,33 @@
+PLATFORMS = [
+    ("codepen", "CodePen"),
+    ("codewars", "Codewars"),
+    ("devto", "Dev.to"),
+    ("facebook", "Facebook"),
+    ("freecodecamp", "FreeCodeCamp"),
+    ("frontendmentor", "Frontend Mentor"),
+    ("github", "GitHub"),
+    ("gitlab", "GitLab"),
+    ("hashnode", "Hashnode"),
+    ("linkedin", "LinkedIn"),
+    ("stackoverflow", "Stack Overflow"),
+    ("twitch", "Twitch"),
+    ("twitter", "Twitter"),
+    ("youtube", "YouTube"),
+]
+
+PLATFORM_REGEXES = {
+    "codepen": r"^https?://(?:www\.)?codepen\.io/.*$",
+    "codewars": r"^https?://(?:www\.)?codewars\.com/.*$",
+    "devto": r"^https?://(?:www\.)?dev\.to/.*$",
+    "facebook": r"^https?://(?:www\.)?facebook\.com/.*$",
+    "freecodecamp": r"^https?://(?:www\.)?freecodecamp\.org/.*$",
+    "frontendmentor": r"^https?://(?:www\.)?frontendmentor\.io/.*$",
+    "github": r"^https?://(?:www\.)?github\.com/.*$",
+    "gitlab": r"^https?://(?:www\.)?gitlab\.com/.*$",
+    "hashnode": r"^https?://(?:www\.)?hashnode\.com/.*$",
+    "linkedin": r"^https?://(?:www\.)?linkedin\.com/.*$",
+    "stackoverflow": r"^https?://(?:www\.)?stackoverflow\.com/.*$",
+    "twitch": r"^https?://(?:www\.)?twitch\.tv/.*$",
+    "twitter": r"^https?://(?:www\.)?twitter\.com/.*$",
+    "youtube": r"^https?://(?:www\.)?youtube\.com/.*$",
+}
