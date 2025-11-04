@@ -24,3 +24,16 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
+
+    @property
+    def formatted_name(self):
+        if self.first_name and self.last_name:
+            formatted_name = f"{self.first_name} {self.last_name}"
+        elif self.first_name:
+            formatted_name = self.first_name
+        elif self.last_name:
+            formatted_name = self.last_name
+        else:
+            formatted_name = ""
+
+        return formatted_name

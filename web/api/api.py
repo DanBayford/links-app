@@ -28,7 +28,11 @@ api = NinjaAPI()
 def get_config(request):
     platforms = Platform.objects.all()
     serialised_platforms = [PlatformSchema.from_orm(p) for p in platforms]
-    return {"platforms": serialised_platforms, "platform_lookup": PLATFORMS, "platform_regexes": PLATFORM_REGEXES}
+    return {
+        "platforms": serialised_platforms,
+        "platform_lookup": PLATFORMS,
+        "platform_regexes": PLATFORM_REGEXES,
+    }
 
 
 @api.get("/user")

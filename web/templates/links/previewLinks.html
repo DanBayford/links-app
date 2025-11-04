@@ -1,6 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %}
 {% block content %}
+{% load platform_tags %}
 <section class="relative col-span-full row-span-full flex-col">
   <!-- Purple background -->
   <div class="absolute top-0 left-0 w-full h-2/5 bg-purple-600 rounded-b-3xl"></div>
@@ -9,10 +10,33 @@
     {% if request.user.is_authenticated %}
     <div class="absolute top-6 left-6 w-[calc(100%-3rem)] p-4 flex justify-between bg-white rounded-xl">
       <a href="{% url 'links:edit' pk=object.id %}" class="btn btn__secondary">Back to Editor</a>
-      <button class="btn btn__primary">Share Link</button>
+      <button id="copyUrlBtn" class="btn btn__primary basis-30">Share Link</button>
     </div>
     {% endif %}
-    <div class="h-120 w-70 bg-white shadow-[0_10px_30px_rgba(115,_115,_155,_0.7)] rounded-xl">Card</div>
+    <div class="min-h-[570px] w-[350px] mt-10 flex flex-col items-center p-8 bg-white shadow-[0_10px_30px_rgba(115,_115,_155,_0.7)] rounded-xl">
+    {% if user.profile_image %}
+      <img class="rounded-full h-32 w-32 border-4 border-purple-600" src="{{ user.profile_image.url }}" alt="{{ user.formatted_name }} profile picture">
+    {% else %}
+      <div class="rounded-full h-32 w-32 bg-gray-300"></div>
+    {% endif %}
+    {% if user.formatted_name %}
+      <p class="mt-4 text-4xl font-bold tracking-wide text-gray-700">{{ user.formatted_name}}</p>
+    {% else %}
+      <span class="mt-4 h-8 w-[75%] bg-gray-300 rounded-2xl"></span>
+    {% endif %}
+    <a href="mailto:{{ user.email }}?subject=Hello%20{{ user.formatted_name }}!" class="text-lg text-gray-500">{{ user.email }}</a>
+    <ul class="mt-6 w-full flex flex-col gap-4">
+      {% for link in user.links.all %}
+          <a href="{{ link.link_url }}" target="_blank" rel="noopener noreferrer" class="hover:pointer hover:opacity-80">
+            <li style="background-color: {{link.platform.platform_color }}" class="flex items-center gap-3 p-2 rounded-lg text-white">
+              <img src="{{ link.platform.platform_icon.url }}" style="filter: brightness(0) invert(1)" class="h-8 w-8"/>  
+              {{ link.platform.platform_name|platform_label }}
+            </li>
+          </a>
+      {% endfor %}
+    </ul>
+
+    </div>
   </div>
 </section>
 

@@ -5,7 +5,7 @@ const isDev = process.env.NODE_ENV === "development";
 const API_DELAY = isDev ? 400 : 0;
 const sleep = () => new Promise((resolve) => setTimeout(resolve, API_DELAY));
 
-const _axiosInstance = axios.create({
+const axiosInstance = axios.create({
   baseURL: isDev
     ? "http://127.0.0.1:8001/api" // Note this needs to be exact for sessions cookie to be inc via withCredentials (ie 127.0.0.1 =/= localhost!)
     : "https://links.bayford.dev/api",
@@ -13,11 +13,11 @@ const _axiosInstance = axios.create({
   withCredentials: true,
 });
 
-_axiosInstance.defaults.headers.post["X-CSRFToken"] = getCookie("csrftoken");
-_axiosInstance.defaults.headers.post["Content-Type"] = "application/jsom";
+axiosInstance.defaults.headers.post["X-CSRFToken"] = getCookie("csrftoken");
+axiosInstance.defaults.headers.post["Content-Type"] = "application/jsom";
 
 // Interceptors
-_axiosInstance.interceptors.request.use(
+axiosInstance.interceptors.request.use(
   (requestConfig) => {
     return requestConfig;
   },
@@ -26,7 +26,7 @@ _axiosInstance.interceptors.request.use(
   }
 );
 
-_axiosInstance.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   async (response) => {
     await sleep();
     return response;
@@ -38,11 +38,11 @@ _axiosInstance.interceptors.response.use(
 
 // Axios config
 const requests = {
-  get: (url) => _axiosInstance.get(url),
-  post: (url, body) => _axiosInstance.post(url, body),
-  put: (url, body) => _axiosInstance.put(url, body),
-  patch: (url, body) => _axiosInstance.patch(url, body),
-  delete: (url) => _axiosInstance.delete(url),
+  get: (url) => axiosInstance.get(url),
+  post: (url, body) => axiosInstance.post(url, body),
+  put: (url, body) => axiosInstance.put(url, body),
+  patch: (url, body) => axiosInstance.patch(url, body),
+  delete: (url) => axiosInstance.delete(url),
 };
 
 // APIs

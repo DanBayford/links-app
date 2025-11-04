@@ -10,7 +10,7 @@ export const useToast = () => {
   };
 
   const infoToast = (message) => {
-    toast.notify(message);
+    toast.info(message);
   };
 
   const clearToasts = () => {

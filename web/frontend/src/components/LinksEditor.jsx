@@ -1,5 +1,5 @@
 import React from "react";
-import { useLinks, useUserUuid } from "../hooks";
+import { useLinks, useUserUuid, useToast } from "../hooks";
 import { Modal, LinkForm, LinksList, Loader, Error } from "../components";
 import PlusIcon from "../assets/icon-plus.svg";
 import EmptyIssustration from "../assets/illustration-empty.svg";
@@ -8,12 +8,18 @@ import PreviewLogo from "../assets/icon-preview-header.svg";
 export const LinksEditor = () => {
   const { linksData, linksDataLoading, linksDataError } = useLinks();
   const userUuid = useUserUuid();
+  const { infoToast } = useToast();
+
+  const maxLinks = linksData?.length >= 5;
+  console.log("linksData", linksData, maxLinks);
 
   if (linksDataLoading) {
     return <Loader loadingMessage="Loading links" />;
   } else if (linksDataError) {
     return <Error errorMessage="Error loading links" />;
   }
+
+  const maxLinksHandler = () => infoToast("Maximum of 5 links");
 
   return (
     <div className="flex flex-col gap-4 h-full">
@@ -22,23 +28,34 @@ export const LinksEditor = () => {
         Add/edit/remove links below and then share all your profiles with the
         world!
       </p>
-      <Modal>
-        <Modal.OpenModalElement>
-          <div className="flex justify-center items-center gap-2 p-3 border border-indigo-600 text-indigo-600 hover:cursor-pointer hover:bg-indigo-600/5">
-            <PlusIcon className="w-6 h-6 indigo__icon" />
-            Add new link
-          </div>
-        </Modal.OpenModalElement>
-        <Modal.ModalWindow>
-          <LinkForm />
-        </Modal.ModalWindow>
-      </Modal>
+      {maxLinks ? (
+        <div
+          onClick={maxLinksHandler}
+          className="flex justify-center items-center gap-2 p-3 border border-indigo-600 text-indigo-600 hover:cursor-pointer hover:bg-indigo-600/5"
+        >
+          <PlusIcon className="w-6 h-6 indigo__icon" />
+          Add new link
+        </div>
+      ) : (
+        <Modal>
+          <Modal.OpenModalElement>
+            <div className="flex justify-center items-center gap-2 p-3 border border-indigo-600 text-indigo-600 hover:cursor-pointer hover:bg-indigo-600/5">
+              <PlusIcon className="w-6 h-6 indigo__icon" />
+              Add new link
+            </div>
+          </Modal.OpenModalElement>
+          <Modal.ModalWindow>
+            <LinkForm />
+          </Modal.ModalWindow>
+        </Modal>
+      )}
       {linksData.length === 0 ? (
         <div className="flex flex-col justify-center items-center h-full">
           <EmptyIssustration />
           <h2 className="text-xl font-bold">Let's get you started</h2>
           <p className="text-gray-500">
-            Use the "Add new link" button to get started
+            Use the "Add new link" button to get started. Once you have more
+            than one link, you can reorder and edit them!
           </p>
         </div>
       ) : (
