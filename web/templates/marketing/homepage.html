@@ -1,3 +1,85 @@
-{% extends 'base.html' %} {% block content %}
-<section>Homepage</section>
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+
+<!-- Nav -->
+<nav class="col-start-1 col-end-15 flex justify-between items-center p-4 bg-white shadow-lg">
+  <img src="{% static 'img/logo-devlinks-large.svg' %}" class="hidden md:block"/>
+  <img src="{% static 'img/logo-devlinks-small.svg' %}" class="md:hidden"/>
+  <ul class="flex gap-6 text-xl text-purple-600 font-semibold">
+    <li>
+      <a href="{% url 'account_login' %}" class=" hover:text-purple-300 hover:pointer">Login</a>
+    </li>
+    <li>
+      <a href="{% url 'account_signup' %}" class=" hover:text-purple-300 hover:pointer">Register</a>
+    </li>
+  </ul>
+</nav>
+<!-- Hero -->
+<h1 class="hidden lg:flex col-start-2 col-end-12 lg:col-end-8 justify-center items-center text-7xl leading-snug font-extrabold bg-gradient-to-r from-purple-500 via-indigo-300 to-purple-600 bg-clip-text text-transparent">Add, edit and organise your links to share with the world!</h1>
+<div class="col-start-2 col-end-12 lg:col-start-8 lg:col-end-14 flex justify-center items-center bg-white shadow-lg rounded-xl">
+  <img class="shadow-lg rounded-xl" src="{% static 'img/hero.png'%}" alt="Hero"/>
+</div>
+<div class="lg:hidden col-start-2 col-end-12 flex justify-center items-center text-6xl text-center font-extrabold bg-gradient-to-r from-purple-500 via-indigo-300 to-purple-600 bg-clip-text text-transparent">Add, edit and organise your links to share with the world!</div>
+<!-- Supported Platforms -->
+<section class="col-start-1 col-end-15 mt-12 py-8 bg-gradient-to-r from-purple-500 to-purple-600 text-white">
+  <div class="max-w-[1200px] mx-auto">
+    <h2 class="mb-6 text-center text-3xl font-semibold">Link to all your profiles from one place</h2>
+    <ul class="flex gap-4 justify-center flex-wrap">
+      <li class="basis-[30%] min-w-[150px] lg:min-w-[300px] p-2 flex gap-2 justify-center items-center text-4xl">
+        <img src="{% static 'img/icon-github.svg' %}" style="filter: brightness(0) invert(1)" class="w-16 h-16"/>
+        <span class="hidden lg:block">GitHub</span>
+      </li>
+      <li class="basis-[30%] min-w-[150px] lg:min-w-[300px] p-2 flex gap-3 justify-center items-center text-4xl">
+        <img src="{% static 'img/icon-linkedin.svg' %}" style="filter: brightness(0) invert(1)" class="w-16 h-16"/>
+        <span class="hidden lg:block">LinkedIn</span>
+      </li>
+      <li class="basis-[30%] min-w-[150px] lg:min-w-[300px] p-2 flex gap-3 justify-center items-center text-4xl">
+        <img src="{% static 'img/icon-stackoverflow.svg' %}" style="filter: brightness(0) invert(1)" class="w-16 h-16"/>
+        <span class="hidden lg:block">Stack Overflow</span>
+      </li>
+      <li class="basis-[30%] min-w-[150px] lg:min-w-[300px] p-2 flex gap-4 justify-center items-center text-4xl">
+        <img src="{% static 'img/icon-facebook.svg' %}" style="filter: brightness(0) invert(1)" class="w-16 h-16"/>
+        <span class="hidden lg:block">Facebook</span>
+      </li>
+      <li class="basis-[30%] min-w-[150px] lg:min-w-[300px] p-2 flex gap-4 justify-center items-center text-4xl">
+        <img src="{% static 'img/icon-frontendmentor.svg' %}" style="filter: brightness(0) invert(1)" class="w-16 h-16"/>
+        <span class="hidden lg:block">Frontend Mentor</span>
+      </li>
+      <li class="basis-[30%] min-w-[150px] lg:min-w-[300px] p-2 flex gap-3 justify-center items-center text-4xl">
+        <img src="{% static 'img/icon-codewars.svg' %}" style="filter: brightness(0) invert(1)" class="w-16 h-16"/>
+        <span class="hidden lg:block">Codewars</span>
+      </li>
+    </ul>
+    <p class="mt-4 text-xl text-center text-white">...and many more!</p>
+  </div>
+</section>
+<!-- Icons -->
+<section class="col-start-2 col-end-12 lg:col-end-14 mt-12">
+  <ul class="flex flex-wrap justify-evenly gap-y-4">
+    <li class="h-[400px] basis-[300px] flex flex-col items-center p-4 bg-white shadow-lg rounded-xl">
+      <img src="{% static 'img/icon-upload.svg' %}" alt="Upload" class="w-24 h-24 mb-4" style="filter: invert(80%) brightness(0.8);"/>
+      <p class="text-2xl text-center text-gray-400">Upload you platform links to your profile - pick from many popular platforms such as GitHub, LinkedIn and Stack Overflow, plus many more</p>
+    </li>
+    <li class="h-[400px] basis-[300px] flex flex-col items-center p-4 bg-white shadow-lg rounded-xl">
+      <img src="{% static 'img/icon-profile.svg' %}" alt="Profile" class="w-24 h-24 mb-4" style="filter: invert(80%) brightness(0.8);"/>
+      <p class="text-2xl text-center text-gray-400">Add your name and contact details to personalise your profile. Upload a profile picture to really help your profile stand out!</p>
+    </li>
+    <li class="h-[400px] basis-[300px] flex flex-col items-center p-4 bg-white shadow-lg rounded-xl">
+      <img src="{% static 'img/icon-globe.svg' %}" alt="Globe" class="w-24 h-24 mb-4" style="filter: invert(80%) brightness(0.8);"/>
+      <p class="text-2xl text-center text-gray-400">Once you're ready, share all your profiles and contact details with just one link. Allow potential employers and recruiters to view you whole web presence with one card!</p>
+    </li>
+  </ul>
+</section>
+<!-- CTA -->
+<section class="col-start-2 col-end-12 lg:col-end-14 mt-12 flex flex-col gap-12 items-center">
+  <p class="text-5xl text-center font-extrabold bg-gradient-to-r from-purple-500 via-indigo-300 to-purple-600 bg-clip-text text-transparent">Get started now and share your links with the world!</p>
+  <a href="{% url 'account_signup' %}" class="btn btn__primary px-6 py-4 text-2xl">Sign up now!</a>
+</section>
+<!-- Footer -->
+<footer class="col-start-1 col-end-15 mt-12 h-[100px] flex justify-between items-center px-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-bold">
+  <p>Devlinks project by <a href="https://www.bayford.dev" target="_blank" rel="noopener noreferrer">Dan Bayford</a></p>
+  <p>&copy;<span id="footer-copyright" class="ml-1"><span></p>  
+</footer>
+
 {% endblock content %}

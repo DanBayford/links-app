@@ -42,7 +42,7 @@ export const LinksList = ({ linksData = [] }) => {
       >
         <ul className="relative flex flex-col gap-2 overflow-y-auto hide-scrollbar">
           {isReorderingLinks && (
-            <div className="absolute top-0 left-0 w-full h-full bg-gray-50/50" />
+            <div className="absolute top-0 left-0 w-full h-[200%] bg-gray-50/50" />
           )}
           {linksData.map((link, i) => (
             <LinkItem key={link.uuid} linkItem={link} linkNumber={i + 1} />

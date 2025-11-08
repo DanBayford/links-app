@@ -51,7 +51,7 @@ const UserDetails = ({ userData, linksData }) => {
           <img
             src={`/media/${userData.profile_image}`}
             alt="User profile image"
-            className="rounded-full h-24 w-25"
+            className="border-4 border-purple-600 rounded-full h-24 w-25"
           />
         ) : null}
       </div>
@@ -60,14 +60,18 @@ const UserDetails = ({ userData, linksData }) => {
           hasName ? "bg-white" : ""
         }`}
       >
-        {hasName && <>{fullName}</>}
+        {hasName && (
+          <p className="text-2xl font-bold tracking-wide text-gray-700">
+            {fullName}
+          </p>
+        )}
       </div>
       <div
         className={`absolute left-1/2 -translate-x-1/2 h-4 w-60 top-[230px] flex justify-center text-sm text-gray-500 ${
           hasEmail ? "bg-white" : ""
         }`}
       >
-        {hasEmail && <>{userData.email}</>}
+        {hasEmail && <p className="text-lg text-gray-500">{userData.email}</p>}
       </div>
       <div
         style={{ top: `${topOffsetConstant + relativeOffset * 1}px` }}

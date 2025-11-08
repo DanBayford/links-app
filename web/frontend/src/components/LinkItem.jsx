@@ -60,13 +60,13 @@ export const LinkItem = ({ linkItem, linkNumber }) => {
         </h2>
       </div>
 
-      <div className="flex gap-4">
-        <span className="p-2 grow text-gray-500 border border-gray-200 rounded">
+      <div className="flex flex-wrap gap-4">
+        <span className="p-2 w-full sm:w-auto grow text-gray-500 border border-gray-200 rounded">
           {linkItem.link_url}
         </span>
         <Modal>
           <Modal.OpenModalElement>
-            <span className="btn basis-26 btn__secondary">Edit</span>
+            <span className="ml-auto btn basis-26 btn__secondary">Edit</span>
           </Modal.OpenModalElement>
           <Modal.ModalWindow>
             <LinkForm currentLink={linkItem} />

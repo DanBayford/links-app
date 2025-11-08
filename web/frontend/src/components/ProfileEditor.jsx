@@ -117,7 +117,7 @@ export const ProfileEditor = () => {
 
   return (
     <form
-      className="flex flex-col gap-4 h-full"
+      className="flex flex-col gap-2 sm:gap-4 h-full"
       onSubmit={handleSubmit(submitHandler)}
       noValidate
     >
@@ -128,12 +128,15 @@ export const ProfileEditor = () => {
         </p>
       </div>
 
-      <div className="relative w-full basis-3/6 flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
-        <label className="basis-1/3 text-gray-500" htmlFor="profilePicture">
+      <div className="relative w-full basis-3/6 flex justify-between sm:flex-start items-center flex-wrap gap-3 p-4 bg-gray-50 rounded-lg">
+        <label
+          className="w-full sm:basis-[30%] text-gray-500"
+          htmlFor="profilePicture"
+        >
           Profile picture
         </label>
         <label
-          className="relative w-full h-full basis-1/3 flex flex-col gap-2 justify-center items-center bg-cover bg-center rounded-xl hover:cursor-pointer"
+          className="relative basis-[50%] h-[80%] sm:h-full sm:basis-[40%] flex flex-col gap-2 justify-center items-center bg-cover bg-center rounded-xl hover:cursor-pointer"
           style={
             profilePicturePreviewUrl
               ? { backgroundImage: `url(${profilePicturePreviewUrl})` }
@@ -164,7 +167,7 @@ export const ProfileEditor = () => {
             {...register("profilePicture")}
           />
         </label>
-        <p className="basis-1/3 text-gray-500">
+        <p className="basis-[40%] sm:basis-[20%] text-gray-500">
           Max image size 5MB. <br />
           Use PNG or JPG format.
         </p>
@@ -176,14 +179,17 @@ export const ProfileEditor = () => {
       </div>
 
       <div className="w-full basis-1/3 flex flex-col gap-4 p-4 bg-gray-50 rounded-lg">
-        <div className="relative flex items-center">
-          <label className="basis-1/5 text-gray-500" htmlFor="firstName">
+        <div className="relative flex flex-wrap items-center">
+          <label
+            className="w-full sm:basis-1/5 mb-2 sm:mb-0 text-gray-500"
+            htmlFor="firstName"
+          >
             First name*
           </label>
           <input
             type="text"
             id="firstName"
-            className="basis-4/5 bg-white"
+            className="w-full sm:basis-4/5 bg-white"
             {...register("firstName")}
           />
           {errors.firstName && (
@@ -192,14 +198,17 @@ export const ProfileEditor = () => {
             </p>
           )}
         </div>
-        <div className="relative flex items-center">
-          <label className="basis-1/5 text-gray-500" htmlFor="lastName">
+        <div className="relative flex flex-wrap items-center">
+          <label
+            className="w-full sm:basis-1/5 mb-2 sm:mb-0 text-gray-500"
+            htmlFor="lastName"
+          >
             Last name*
           </label>
           <input
             type="text"
             id="lastName"
-            className="basis-4/5 bg-white"
+            className="w-full sm:basis-4/5 bg-white"
             {...register("lastName")}
           />
           {errors.lastName && (
@@ -209,15 +218,18 @@ export const ProfileEditor = () => {
           )}
         </div>
 
-        <div className="relative flex items-center">
-          <label className="basis-1/5 text-gray-500" htmlFor="email">
+        <div className="relative flex flex-wrap items-center">
+          <label
+            className="w-full sm:basis-1/5 mb-2 sm:mb-0 text-gray-500"
+            htmlFor="email"
+          >
             Email*
           </label>
           <input
             id="email"
             type="email"
             autoComplete="email"
-            className="basis-4/5 bg-white"
+            className="w-full sm:basis-4/5 bg-white"
             {...register("email")}
           />
           {errors.email && (
@@ -228,10 +240,7 @@ export const ProfileEditor = () => {
         </div>
       </div>
 
-      <div className="mt-auto flex justify-between py-3 border-t border-t-gray-300">
-        <a className="btn btn__secondary" href="/confirm">
-          Logout
-        </a>
+      <div className="mt-auto flex justify-end py-3 border-t border-t-gray-300">
         <button
           type="submit"
           className="btn btn__primary"

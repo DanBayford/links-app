@@ -88,7 +88,7 @@ ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]  # * means requir
 ACCOUNT_LOGIN_METHODS = {"email"}
 SITE_ID = 1
 LOGIN_URL = "/login"  # Redirect for unauthed users
-LOGOUT_REDIRECT_URL = "/login"
+LOGOUT_REDIRECT_URL = "/" # Homepage
 ACCOUNT_EMAIL_VERIFICATION = "none"  # disable email verification
 ACCOUNT_ADAPTER = "users.adapters.CustomAccountAdapter"
 

@@ -108,6 +108,9 @@ button:disabled {
   .indigo__icon > path {
     stroke: rgb(99, 60, 225);
   }
+  .gray__icon > path {
+    stroke: rgb(211, 211, 211);
+  }
   .hide-scrollbar::-webkit-scrollbar {
     display: none; /* Chrome, Safari */
   }

@@ -2,8 +2,7 @@ import React from "react";
 import { useLinks, useUserUuid, useToast } from "../hooks";
 import { Modal, LinkForm, LinksList, Loader, Error } from "../components";
 import PlusIcon from "../assets/icon-plus.svg";
-import EmptyIssustration from "../assets/illustration-empty.svg";
-import PreviewLogo from "../assets/icon-preview-header.svg";
+import EmptyIllustration from "../assets/illustration-empty.svg";
 
 export const LinksEditor = () => {
   const { linksData, linksDataLoading, linksDataError } = useLinks();
@@ -11,7 +10,6 @@ export const LinksEditor = () => {
   const { infoToast } = useToast();
 
   const maxLinks = linksData?.length >= 5;
-  console.log("linksData", linksData, maxLinks);
 
   if (linksDataLoading) {
     return <Loader loadingMessage="Loading links" />;
@@ -51,7 +49,7 @@ export const LinksEditor = () => {
       )}
       {linksData.length === 0 ? (
         <div className="flex flex-col justify-center items-center h-full">
-          <EmptyIssustration />
+          <EmptyIllustration />
           <h2 className="text-xl font-bold">Let's get you started</h2>
           <p className="text-gray-500">
             Use the "Add new link" button to get started. Once you have more
@@ -61,13 +59,9 @@ export const LinksEditor = () => {
       ) : (
         <LinksList linksData={linksData} />
       )}
-      <div className="mt-auto flex justify-end py-3 border-t border-t-gray-300">
-        <a
-          href={`/links/${userUuid}/preview`}
-          className="btn px-6 py-6 sm:px-4 sm:py-2 btn__primary"
-        >
-          <PreviewLogo className="sm:hidden" />
-          <span className="hidden sm:block">Preview</span>
+      <div className="flex justify-end py-3 border-t border-t-gray-300">
+        <a href={`/links/${userUuid}`} className="btn btn__primary">
+          <span>Preview</span>
         </a>
       </div>
     </div>

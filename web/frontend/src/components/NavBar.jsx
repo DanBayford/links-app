@@ -3,6 +3,7 @@ import LargeDevLinksLogo from "../assets/logo-devlinks-large.svg";
 import SmallDevLinksLogo from "../assets/logo-devlinks-small.svg";
 import LinkLogo from "../assets/icon-link.svg";
 import ProfileLogo from "../assets/icon-profile-details-header.svg";
+import LogoutLogo from "../assets/logout.svg";
 
 export const NavBar = ({ VIEWS, currentView, setCurrentView }) => {
   return (
@@ -12,7 +13,7 @@ export const NavBar = ({ VIEWS, currentView, setCurrentView }) => {
         <SmallDevLinksLogo className="my-auto sm:hidden" />
         <div className="flex gap-1 md:gap-2 text-gray-500">
           <button
-            className={`btn px-10 sm:px-4 ${
+            className={`btn px-8 sm:px-4 ${
               currentView === VIEWS.LINKS_EDITOR
                 ? "btn__link--active"
                 : "btn__link"
@@ -23,7 +24,7 @@ export const NavBar = ({ VIEWS, currentView, setCurrentView }) => {
             <span className="hidden sm:block">Links</span>
           </button>
           <button
-            className={`btn px-10 sm:px-4 ${
+            className={`btn px-8 sm:px-4 ${
               currentView === VIEWS.PROFILE_EDITOR
                 ? "btn__link--active"
                 : "btn__link"
@@ -31,11 +32,12 @@ export const NavBar = ({ VIEWS, currentView, setCurrentView }) => {
             onClick={() => setCurrentView(VIEWS.PROFILE_EDITOR)}
           >
             <ProfileLogo />
-            <span className="hidden sm:block">Profile Details</span>
+            <span className="hidden sm:block">Profile</span>
           </button>
         </div>
         <a className="btn btn__secondary" href="/confirm">
-          Logout
+          <LogoutLogo className="sm:hidden h-5 w-5 indigo__icon" />
+          <span className="hidden sm:block">Logout</span>
         </a>
       </nav>
     </section>
