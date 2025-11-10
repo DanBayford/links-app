@@ -16,14 +16,14 @@
 
 @font-face {
   font-family: "InstrumentSans";
-  src: url("../core/static/fonts/InstrumentSans-Regular.ttf") format("ttf");
+  src: url("../fonts/InstrumentSans-Regular.ttf") format("ttf");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "InstrumentSans";
-  src: url("../core/static/fonts/InstrumentSans-Bold.ttf") format("ttf");
+  src: url("../fonts/InstrumentSans-Bold.ttf") format("ttf");
   font-weight: 700;
   font-style: normal;
 }

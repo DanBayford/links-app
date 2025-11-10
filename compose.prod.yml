@@ -13,7 +13,7 @@ services:
     #   - 8000
     # ports available outside Docker network
     ports:
-      - 8000:8000
+      - 8001:8000
     environment:
       DJANGO_SETTINGS_MODULE: core.settings.prod
     env_file:
