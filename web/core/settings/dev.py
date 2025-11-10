@@ -12,6 +12,9 @@ ALLOWED_HOSTS = os.environ.get(
     "DJANGO_ALLOWED_HOSTS", "localhost 127.0.0.1 [::1]"
 ).split(" ")
 
+# Where to upload media (parent dir)
+MEDIA_ROOT = BASE_DIR / "media"
+
 INSTALLED_APPS.insert(6, "debug_toolbar")
 INSTALLED_APPS.insert(6, "django_browser_reload")
 

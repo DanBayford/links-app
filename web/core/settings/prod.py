@@ -19,6 +19,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # Whitenoise static asset server config
 MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 
+# Where to upload media (Docker volume)
+MEDIA_ROOT = BASE_DIR / "mediafiles"
+
 STORAGES = {
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",

@@ -107,5 +107,3 @@ STATICFILES_DIRS = [str(BASE_DIR / "core/static")]
 # URL namespace for uploaded files
 MEDIA_URL = "/media/"
 
-# Where to upload media (parent dir)
-MEDIA_ROOT = BASE_DIR / "media"
