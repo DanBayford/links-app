@@ -2,7 +2,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
-from django.urls import path, include
+from django.views.static import serve as static_serve
+from django.urls import path, include, re_path
 from allauth.account.views import SignupView, LogoutView, LoginView  # type:ignore
 from api.api import api
 
@@ -35,7 +36,7 @@ urlpatterns = [
     path("", include("marketing.urls")),
     path("", include("links.urls")),
     path("api/", api.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # media served by Django for demo app
+]
 
 if settings.DEBUG:
     import debug_toolbar  # type: ignore
@@ -44,6 +45,12 @@ if settings.DEBUG:
         [
             path("__debug__/", include(debug_toolbar.urls)),
             path("__reload__/", include("django_browser_reload.urls")),
-        ]
+        ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
         + urlpatterns
     )
+
+else:
+    urlpatterns = [
+        # Django serve media from file system (inefficient but ok for demo app)
+        re_path(r"^media/(?P<path>.*)$", static_serve, {"document_root": settings.MEDIA_ROOT}),
+    ] + urlpatterns

@@ -23,7 +23,7 @@ MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 MEDIA_ROOT = BASE_DIR / "mediafiles"
 
 STORAGES = {
-    # Allow local file system to be used for media uplaods / serving
+    # Allow local file system to be used for media uploads / serving
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
         "OPTIONS": {
