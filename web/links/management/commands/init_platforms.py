@@ -1,4 +1,5 @@
 import os
+from django.conf import settings
 from pathlib import Path
 from django.core.management.base import BaseCommand
 from django.core.files import File
@@ -48,7 +49,10 @@ class Command(BaseCommand):
         Platform.objects.all().delete()
 
         self.stdout.write("Deleting existing Platform SVGs")
-        svg_folder = Path("media/platform-svgs")
+        if settings.DEBUG:
+            svg_folder = Path("media/platform-svgs") # Local dir
+        else:
+            svg_folder = Path("mediafiles/platform-svgs") # Docker volume
         for file in svg_folder.iterdir():
             if file.is_file() and file.name != ".gitkeep":
                 file.unlink()
